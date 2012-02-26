@@ -4,7 +4,7 @@ Photo Gallery CSS and Javascript Test Instructions:
 
 1. All photo data for the gallery test must come from the JSON object
 
-2. The JSON data must come from an Ajax call made to the file "gallery_json.js"
+2. The JSON data must come from an Ajax call made to the file "gallery_json.txt"
 
 3. Once the json has been loaded the first photo and all thumbnails should appear
 
