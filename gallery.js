@@ -90,10 +90,14 @@ krout.gallery.prototype.select = function(idx) {
 
 krout.gallery.prototype._photo = function(url) {
 	var _this = this;
+	var image = new Image();
 	if ($(this.photo).attr('src') != null) {
 		$(this.photo).fadeTo('fast', 0, function() {
-			$(_this.photo).attr('src', url);
-			$(_this.photo).fadeTo('fast', 1);
+			image.src = url;
+			image.onload = function(e) {
+				$(_this.photo).attr('src', url);
+				$(_this.photo).fadeTo('fast', 1);
+			}
 		});
 	} else {
 		$(this.photo).attr('src', url);
