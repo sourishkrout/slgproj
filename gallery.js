@@ -2,6 +2,7 @@ var krout = {
 	gallery: function(div, jsonurl) {
 		this.div = div;
 		this.idx = -1;
+		this.photo = 0;
 		
 		this.init(jsonurl);
 	}
@@ -19,6 +20,7 @@ krout.gallery.prototype.init = function(jsonurl) {
 			
 			_this._createAlbum();
 			
+			// Let's start out with photo number one.
 			_this.select(1);
 		}
 	});
@@ -69,7 +71,8 @@ krout.gallery.prototype.select = function(idx) {
 		} 
 	}
 	
-	$(this.photo).attr('src', img.url);
+	this._photo(img.url);
+	
 	$(this.div).find('div.caption').text(img.title);
 	$(this.div).find('div.location').text(location());
 
@@ -83,6 +86,20 @@ krout.gallery.prototype.select = function(idx) {
 	});
 	
 	return img.id;
+};
+
+krout.gallery.prototype._photo = function(url) {
+	var _this = this;
+	if ($(this.photo).attr('src') != null) {
+		$(this.photo).fadeTo('fast', 0, function() {
+			$(_this.photo).attr('src', url);
+			$(_this.photo).fadeTo('fast', 1);
+		});
+	} else {
+		$(this.photo).attr('src', url);
+	}
+	
+	//$(inactive).fadeTo('slow', 0);
 };
 
 krout.gallery.prototype._nextIdx = function() {
@@ -105,6 +122,5 @@ krout.gallery.prototype._prevIdx = function() {
 
 $(function() {
 	var gdiv = $('#gallery');
-	
 	var glry = new krout.gallery(gdiv, 'gallery_json.txt');
 });
