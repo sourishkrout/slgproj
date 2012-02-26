@@ -38,6 +38,28 @@ div#gallery div.header {
 	background: url('bg_header.png');
 }
 
+div#gallery div.prev {
+	width: 95px;
+	text-align: left;
+	float: left;
+}
+
+div#gallery div.title {
+	color: white;
+	font-size: 190%;
+	width: 784px;
+	float: left;
+	padding-top: 12px;
+}
+
+div#gallery div.title div {
+}
+
+div#gallery div.next {
+	width: 95px;
+	float: left;
+}
+
 div#gallery div.thumbs {
 	height: 124px;
 	background: url('bg_thumbs.png');	
@@ -58,7 +80,7 @@ div#gallery div.location {
 }
 
 div#gallery div.legend {
-	margin-top: 10px;
+	margin-top: 6px;
 }
 
 div#gallery div {
