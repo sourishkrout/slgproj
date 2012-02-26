@@ -1,0 +1,66 @@
+body {
+	font-family: Helvetica, Tahoma, Arial;
+	margin: 0 0 0 0;
+}
+
+div#gallery {
+	width: 974px;
+	height: 732px;
+}
+
+div#gallery img.photo {
+	padding: 7px;
+	background: white;
+	border: 1px solid gray;
+	vertical-align: middle;
+}
+
+div#gallery img.thumb {
+	vertical-align: text-top;
+	margin-top: 20px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+div#gallery div.body {
+	height: 551px;
+	width: 974px;
+	
+	background: url('bg_body.png');
+	
+	display:table-cell;
+	vertical-align:middle
+}
+
+div#gallery div.header {
+	height: 56px;
+	
+	background: url('bg_header.png');
+}
+
+div#gallery div.thumbs {
+	height: 124px;
+	background: url('bg_thumbs.png');	
+}
+
+div#gallery div.thumbs img.selected {
+	border: 3px solid white;
+}
+
+div#gallery div.caption {
+	font-size: 140%;
+	color: #404040;
+}
+
+div#gallery div.location {
+	font-size: 90%;
+	color: #606060;
+}
+
+div#gallery div.legend {
+	margin-top: 10px;
+}
+
+div#gallery div {
+	text-align: center;	
+}
