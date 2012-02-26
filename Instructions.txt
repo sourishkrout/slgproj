@@ -1,0 +1,24 @@
+
+Photo Gallery CSS and Javascript Test Instructions:
+
+
+1. All photo data for the gallery test must come from the JSON object
+
+2. The JSON data must come from an Ajax call made to the file "gallery_json.js"
+
+3. Once the json has been loaded the first photo and all thumbnails should appear
+
+4. the Album name should be displayed at the top
+
+5. clicking on the thumbnail photos will display the corresponding larger photo
+
+6. when a thumbnail is selected it should be highlighted
+
+7. when a photo is displayed the title, date and location must appear below it
+
+8. clicking on the arrows will got to the next or previous photo
+
+9. please make your photo gallery look similar to the mockup
+
+
+Feel free to use any frameworks or libraries you like
