@@ -102,8 +102,6 @@ krout.gallery.prototype._photo = function(url) {
 	} else {
 		$(this.photo).attr('src', url);
 	}
-	
-	//$(inactive).fadeTo('slow', 0);
 };
 
 krout.gallery.prototype._nextIdx = function() {
