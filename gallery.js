@@ -20,8 +20,11 @@ krout.gallery.prototype.init = function(jsonurl) {
 			
 			_this._createAlbum();
 			
-			// Let's start out with photo number one.
-			_this.select(1);
+			/*
+			We let _nextIdx method determine the first photo due to
+			uncertainty about ids in JSON file
+			*/
+			_this.select(_this._nextIdx());
 		}
 	});
 };
@@ -36,7 +39,10 @@ krout.gallery.prototype._createAlbum = function() {
 	var thumbs = $(this.div).find('div.thumbs');
 	for (var i=0; i < this.data.photos.length; i++) {
 		var t = this.data.photos[i];
-		thumbs.append('<a href="javascript:void(0);"><img class="thumb" src="' + t.thumb_url + '" gallery:idx="' + t.id + '"></a>');
+		var thumb  = '<a href="javascript:void(0);">';
+			thumb += '<img class="thumb" src="' + t.thumb_url + '" gallery:idx="' + t.id + '">';
+			thumb += '</a>';
+		thumbs.append(thumb);
 	}
 	
 	$(thumbs).find('img').each(function(idx, item) {
