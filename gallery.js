@@ -36,8 +36,7 @@ krout.gallery.prototype._createAlbum = function() {
 	var thumbs = $(this.div).find('div.thumbs');
 	for (var i=0; i < this.data.photos.length; i++) {
 		var t = this.data.photos[i];
-		var id = t.id;
-		thumbs.append('<img class="thumb" src="' + t.thumb_url + '" gallery:idx="' + t.id + '" />')
+		thumbs.append('<a href="javascript:void(0);"><img class="thumb" src="' + t.thumb_url + '" gallery:idx="' + t.id + '"></a>');
 	}
 	
 	$(thumbs).find('img').each(function(idx, item) {
