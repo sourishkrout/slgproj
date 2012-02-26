@@ -52,9 +52,6 @@ div#gallery div.title {
 	padding-top: 12px;
 }
 
-div#gallery div.title div {
-}
-
 div#gallery div.next {
 	width: 95px;
 	float: left;
@@ -65,18 +62,22 @@ div#gallery div.thumbs {
 	background: url('bg_thumbs.png');	
 }
 
-div#gallery div.thumbs img.selected {
+div#gallery div.thumbs img {
 	border: 3px solid white;
+}
+
+div#gallery div.thumbs img.selected {
+	border: 5px solid #82E4F5;
 }
 
 div#gallery div.caption {
 	font-size: 140%;
-	color: #404040;
+	color: #383838;
 }
 
 div#gallery div.location {
 	font-size: 90%;
-	color: #606060;
+	color: #575757;
 }
 
 div#gallery div.legend {

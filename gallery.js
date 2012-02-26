@@ -1,19 +1,22 @@
 var krout = { 
-	gallery: function(div) {
+	gallery: function(div, jsonurl) {
 		this.div = div;
 		this.idx = -1;
+		
+		this.init(jsonurl);
 	}
 };
 
 krout.gallery.prototype.init = function(jsonurl) {
 	var _this = this;
+	this.photo = $(this.div).find('img.photo');
+	
 	$.ajax({
 		url: jsonurl,
 		dataType: 'json',
 		success: function(data) {
 			_this.data = data;
 			
-			_this._domElements();
 			_this._createAlbum();
 			
 			_this.select(1);
@@ -51,23 +54,14 @@ krout.gallery.prototype._createAlbum = function() {
 	});
 };
 
-krout.gallery.prototype._domElements = function() {
-	var html = '<div class="header">';
-	html += '<div class="prev"><a href="javascript:void(0);"><img src="button_prev.png" /></a></div>';
-	html += '<div class="title">Title</div>';
-	html += '<div class="next"><a href="javascript:void(0);"><img src="button_next.png" /></a></div>';
-	html += '</div>';
-	html += '<div class="body"><img class="photo" />';
-	html += '<div class="legend"><div class="caption">Caption</div>';
-	html += '<div class="location">Location</div></div></div>';
-	html += '<div class="thumbs"></div>';
-	$(this.div).append(html);
-	this.photo = $(this.div).find('img.photo');
-};
-
 krout.gallery.prototype.select = function(idx) {
+	var _this = this;
 	var img = this.data.photos[0];
-	
+	var thumbs = $(this.div).find('div.thumbs');
+	var location = function() {
+		return 'Taken on ' + img.date + ' in ' + img.location;
+	};
+		
 	for (var i=0; i < this.data.photos.length; i++) {
 		if (parseInt(this.data.photos[i].id) == parseInt(idx)) {
 			img = this.data.photos[i];
@@ -75,20 +69,19 @@ krout.gallery.prototype.select = function(idx) {
 		} 
 	}
 	
-	var location = function() {
-		return 'Taken on ' + img.date + ' in ' + img.location;
-	};
-		
 	$(this.photo).attr('src', img.url);
 	$(this.div).find('div.caption').text(img.title);
 	$(this.div).find('div.location').text(location());
+
+	this.idx = parseInt(img.id);
 	
-	var thumbs = $(this.div).find('div.thumbs');
-	$(thumbs).find('img').each(function(idx, itme) {
-		$(this).addClass('selected');
+	$(thumbs).find('img').each(function(idx, item) {
+		if (_this.idx == parseInt($(this).attr('gallery:idx')))
+			$(this).addClass('selected');
+		else
+			$(this).removeClass('selected');
 	});
 	
-	this.idx = parseInt(img.id);
 	return img.id;
 };
 
@@ -113,6 +106,5 @@ krout.gallery.prototype._prevIdx = function() {
 $(function() {
 	var gdiv = $('#gallery');
 	
-	var glry = new krout.gallery(gdiv);
-		glry.init('gallery_json.txt');
+	var glry = new krout.gallery(gdiv, 'gallery_json.txt');
 });
